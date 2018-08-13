@@ -567,15 +567,24 @@ public class ChattingListAdapter extends BaseAdapter {
                         if (status == 0) {
                             holder.headIcon.setImageBitmap(bitmap);
                         } else {
-                            holder.headIcon.setImageResource(R.drawable.jmui_head_icon);
+                            if (getItemViewType(position) == TYPE_SEND_TXT) {
+                                // TODO(Hjy): 2018/8/13 设置 我 的默认头像
+                            } else {
+                                holder.headIcon.setImageResource(R.drawable.jmui_head_icon);
+                            }
                         }
                     }
                 });
             } else {
-                holder.headIcon.setImageResource(R.drawable.jmui_head_icon);
+                if (getItemViewType(position) == TYPE_SEND_TXT) {
+                    // TODO(Hjy): 2018/8/13 设置 我 的默认头像
+                } else {
+                    holder.headIcon.setImageResource(R.drawable.jmui_head_icon);
+                }
             }
-
+            // TODO(Hjy): 2018/8/13 禁用此功能
             // 点击头像跳转到个人信息界面
+/*
             holder.headIcon.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -600,6 +609,7 @@ public class ChattingListAdapter extends BaseAdapter {
                     }
                 }
             });
+*/
 
             holder.headIcon.setTag(position);
             holder.headIcon.setOnLongClickListener(mLongClickListener);
